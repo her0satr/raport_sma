@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2014 at 01:52 PM
+-- Generation Time: Aug 26, 2014 at 01:53 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -54,13 +54,21 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tahun` int(11) NOT NULL,
   `semester` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
   `discipline_id` int(11) NOT NULL,
   `uh` int(11) NOT NULL,
   `uts` int(11) NOT NULL,
   `us` int(11) NOT NULL,
-  `score` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `grade`
+--
+
+INSERT INTO `grade` (`id`, `tahun`, `semester`, `student_id`, `discipline_id`, `uh`, `uts`, `us`) VALUES
+(3, 2013, 1, 3, 2, 61, 62, 63),
+(4, 2013, 1, 3, 3, 70, 80, 80);
 
 -- --------------------------------------------------------
 
@@ -74,7 +82,15 @@ CREATE TABLE IF NOT EXISTS `homeroom` (
   `semester` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `homeroom`
+--
+
+INSERT INTO `homeroom` (`id`, `tahun`, `semester`, `teacher_id`) VALUES
+(2, 2013, 1, 4),
+(3, 2013, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -92,7 +108,15 @@ CREATE TABLE IF NOT EXISTS `student` (
   `gender` varchar(10) NOT NULL,
   `phone` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `name`, `nisn`, `address`, `birthdate`, `birthplace`, `gender`, `phone`) VALUES
+(2, 'Budiman', '215488', 'Malang', '2014-08-26', 'Surabaya', 'l', '034'),
+(3, 'Siska', '00221144', '', '2014-08-01', '', 'l', '0341');
 
 -- --------------------------------------------------------
 
@@ -109,7 +133,16 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `address` varchar(255) NOT NULL,
   `phone` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`id`, `name`, `gender`, `birthdate`, `birthplace`, `address`, `phone`) VALUES
+(3, 'Bu Ratmi', 'p', '2014-08-01', 'Malang', 'Sukun', '0341'),
+(4, 'Pak Budi', 'l', '2014-08-07', 'Palembang', '-', '033'),
+(5, 'Yogi', 'l', '2014-05-06', '-', '-', '-');
 
 -- --------------------------------------------------------
 
