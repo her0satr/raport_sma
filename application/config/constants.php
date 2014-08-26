@@ -26,4 +26,8 @@ define('USER_ID_TU',							1);
 define('USER_ID_SISWA',							2);
 
 define('DISCIPLINE',							'discipline');
+define('GRADE',									'grade');
+define('HOMEROOM',								'homeroom');
+define('STUDENT',								'student');
+define('TEACHER',								'teacher');
 define('USER',									'user');

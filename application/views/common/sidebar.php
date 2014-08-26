@@ -11,11 +11,11 @@
 	
 	<ul id="nav">
 		<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-		<li><a href="<?php echo base_url('teacher'); ?>"><i class="fa fa-home"></i><span>Guru</span></a></li>
-		<li><a href="<?php echo base_url('homeroom'); ?>"><i class="fa fa-home"></i><span>Wali Kelas</span></a></li>
-		<li><a href="<?php echo base_url('discipline'); ?>"><i class="fa fa-home"></i><span>Mata Pelajaran</span></a></li>
-		<li><a href="<?php echo base_url('student'); ?>"><i class="fa fa-home"></i><span>Siswa</span></a></li>
-		<li><a href="<?php echo base_url('grade'); ?>"><i class="fa fa-home"></i><span>Penilaian</span></a></li>
+		<li><a href="<?php echo base_url('teacher'); ?>"><i class="fa fa-users"></i><span>Guru</span></a></li>
+		<li><a href="<?php echo base_url('homeroom'); ?>"><i class="fa fa-foursquare"></i><span>Wali Kelas</span></a></li>
+		<li><a href="<?php echo base_url('discipline'); ?>"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
+		<li><a href="<?php echo base_url('student'); ?>"><i class="fa fa-male"></i><span>Siswa</span></a></li>
+		<li><a href="<?php echo base_url('grade'); ?>"><i class="fa fa-flask"></i><span>Penilaian</span></a></li>
 	</ul>
 </div>
 

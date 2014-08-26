@@ -930,6 +930,40 @@
 		}
 	}
 	
+	if (! function_exists('get_opt_gender')) {
+		function get_opt_gender() {
+			$result = '
+				<option value="l">Laki Laki</option>
+				<option value="p">Perempuan</option>
+			';
+			
+			return $result;
+		}
+	}
+	
+	if (! function_exists('get_opt_year')) {
+		function get_opt_year() {
+			$result = '
+				<option value="2013">2013 / 2014</option>
+				<option value="2014">2014 / 2015</option>
+				<option value="2015">2015 / 2016</option>
+			';
+			
+			return $result;
+		}
+	}
+	
+	if (! function_exists('get_opt_semester')) {
+		function get_opt_semester() {
+			$result = '
+				<option value="1">Ganjil</option>
+				<option value="2">Genap</option>
+			';
+			
+			return $result;
+		}
+	}
+	
 	if (! class_exists('curl')) {
 		class curl {
 			var $callback = false;
