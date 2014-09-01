@@ -136,7 +136,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">US</label>
 								<div class="col-lg-10">
-									<input type="text" name="us" class="form-control" placeholder="US" />
+									<input type="text" name="uas" class="form-control" placeholder="US" />
 								</div>
 							</div>
 							
@@ -260,7 +260,7 @@ $(document).ready(function() {
 			discipline_id: { required: true },
 			uh: { required: true },
 			uts: { required: true },
-			us: { required: true }
+			uas: { required: true }
 		}
 	});
 	$('#form-grade form').submit(function(e) {

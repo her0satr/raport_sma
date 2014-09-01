@@ -941,6 +941,17 @@
 		}
 	}
 	
+	if (! function_exists('get_value_gender')) {
+		function get_value_gender($value = '') {
+			$array = array(
+				'l' => 'Laki Laki',
+				'p' => 'Perempuan'
+			);
+			
+			return $array[$value];
+		}
+	}
+	
 	if (! function_exists('get_opt_year')) {
 		function get_opt_year() {
 			$result = '
@@ -953,6 +964,18 @@
 		}
 	}
 	
+	if (! function_exists('get_value_year')) {
+		function get_value_year($value = '') {
+			$array = array(
+				'2013' => '2013 / 2014',
+				'2014' => '2014 / 2015',
+				'2015' => '2015 / 2016'
+			);
+			
+			return $array[$value];
+		}
+	}
+	
 	if (! function_exists('get_opt_semester')) {
 		function get_opt_semester() {
 			$result = '
@@ -961,6 +984,17 @@
 			';
 			
 			return $result;
+		}
+	}
+	
+	if (! function_exists('get_value_semester')) {
+		function get_value_semester($value = '') {
+			$array = array(
+				'1' => 'Ganjil',
+				'2' => 'Genap'
+			);
+			
+			return $array[$value];
 		}
 	}
 	

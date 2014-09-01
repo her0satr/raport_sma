@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2014 at 01:53 PM
+-- Generation Time: Sep 01, 2014 at 12:59 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `discipline_id` int(11) NOT NULL,
   `uh` int(11) NOT NULL,
   `uts` int(11) NOT NULL,
-  `us` int(11) NOT NULL,
+  `uas` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
 -- Dumping data for table `grade`
 --
 
-INSERT INTO `grade` (`id`, `tahun`, `semester`, `student_id`, `discipline_id`, `uh`, `uts`, `us`) VALUES
+INSERT INTO `grade` (`id`, `tahun`, `semester`, `student_id`, `discipline_id`, `uh`, `uts`, `uas`) VALUES
 (3, 2013, 1, 3, 2, 61, 62, 63),
 (4, 2013, 1, 3, 3, 70, 80, 80);
 

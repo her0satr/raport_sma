@@ -4,7 +4,7 @@ class grade_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array( 'id', 'tahun', 'semester', 'student_id', 'discipline_id', 'uh', 'uts', 'us' );
+        $this->field = array( 'id', 'tahun', 'semester', 'student_id', 'discipline_id', 'uh', 'uts', 'uas' );
     }
 
     function update($param) {
@@ -101,8 +101,8 @@ class grade_model extends CI_Model {
 		
 		// generate raport
 		$row['raport'] = 0;
-		if (isset($row['uh']) && isset($row['uts']) && isset($row['us'])) {
-			$row['raport'] = (($row['uh'] * 2) + $row['uts'] + $row['us']) / 4;
+		if (isset($row['uh']) && isset($row['uts']) && isset($row['uas'])) {
+			$row['raport'] = (($row['uh'] * 2) + $row['uts'] + $row['uas']) / 4;
 			$row['raport'] = round($row['raport']);
 		}
 		
