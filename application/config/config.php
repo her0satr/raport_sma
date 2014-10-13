@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-	$config['base_url']			= 'http://localhost/raport_sma/trunk';
+	$config['base_url']			= 'http://localhost/raport_smp/trunk';
 	$config['base_path']		= realpath(dirname(__FILE__) . '/../..');
 } else {
 	echo 'Please set up config.';
