@@ -7,7 +7,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'user_sygaas';
 	$db['default']['password'] = 'user_password';
-	$db['default']['database'] = 'raport_sma';
+	$db['default']['database'] = 'raport_smp';
 }
 
 $db['default']['dbdriver'] = 'mysql';
