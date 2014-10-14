@@ -4,7 +4,7 @@ class teacher_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array( 'id', 'name', 'gender', 'birthdate', 'birthplace', 'address', 'phone' );
+        $this->field = array( 'id', 'name', 'gender', 'birthdate', 'birthplace', 'address', 'phone', 'passwd' );
     }
 
     function update($param) {
@@ -39,11 +39,18 @@ class teacher_model extends CI_Model {
 				WHERE teacher.id = '".$param['id']."'
 				LIMIT 1
 			";
+        } else if (isset($param['name'])) {
+            $select_query  = "
+				SELECT teacher.*
+				FROM ".TEACHER." teacher
+				WHERE teacher.name = '".$param['name']."'
+				LIMIT 1
+			";
 		}
 		
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
-            $array = $this->sync($row);
+            $array = $this->sync($row, $param);
         }
        
         return $array;
@@ -92,6 +99,12 @@ class teacher_model extends CI_Model {
 	
 	function sync($row, $param = array()) {
 		$row = StripArray($row);
+		
+		if (isset($row['passwd'])) {
+			if (empty($param['with_password'])) {
+				unset($row['passwd']);
+			}
+		}
 		
 		if (count(@$param['column']) > 0) {
 			$row = dt_view_set($row, $param);

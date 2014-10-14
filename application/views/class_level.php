@@ -1,4 +1,4 @@
-<?php $this->load->view( 'common/meta', array( 'title' => 'Guru' ) ); ?>
+<?php $this->load->view( 'common/meta', array( 'title' => 'Kelas' ) ); ?>
 
 <body>
 <?php $this->load->view( 'common/header'); ?>
@@ -8,7 +8,7 @@
 	
   	<div class="mainbar">
 	    <div class="page-head">
-			<h2 class="pull-left button-back">Guru</h2>
+			<h2 class="pull-left button-back">Kelas</h2>
 			<div class="clearfix"></div>
 		</div>
 		
@@ -30,9 +30,7 @@
 						<table id="datatable" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-									<th>Nama</th>
-									<th>Tempat Lahir</th>
-									<th>Telepon</th>
+									<th>Name</th>
 									<th class="center">Control</th></tr>
 							</thead>
 							<tbody></tbody>
@@ -44,9 +42,9 @@
 					</div>
 				</div>
 				
-				<div class="widget hide" id="form-teacher">
+				<div class="widget hide" id="form-class-level">
 					<div class="widget-head">
-						<div class="pull-left">Form Guru</div>
+						<div class="pull-left">Form Kelas</div>
 						<div class="widget-icons pull-right">
 							<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
 							<a href="#" class="wclose"><i class="fa fa-times"></i></a>
@@ -60,50 +58,9 @@
 							<input type="hidden" name="id" value="0" />
 							
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Nama</label>
+								<label class="col-lg-2 control-label">Name</label>
 								<div class="col-lg-10">
-									<input type="text" name="name" class="form-control" placeholder="Nama" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Password</label>
-								<div class="col-lg-10">
-									<input type="password" name="passwd" class="form-control" placeholder="Password" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Jenis Kelamin</label>
-								<div class="col-lg-10">
-									<select name="gender" class="form-control">
-										<?php echo get_opt_gender(); ?>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Tanggal Lahir</label>
-								<div class="col-lg-10">
-									<div class="input-append datepicker">
-										<input name="birthdate" type="text" class="form-control dtpicker" placeholder="Tanggal Lahir" data-format="dd-MM-yyyy" />
-										<span class="add-on"><i data-time-icon="fa fa-time" data-date-icon="fa fa-calendar" class="btn btn-info"></i></span>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Tempat Lahir</label>
-								<div class="col-lg-10">
-									<input type="text" name="birthplace" class="form-control" placeholder="Tempat Lahir" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Alamat</label>
-								<div class="col-lg-10">
-									<input type="text" name="address" class="form-control" placeholder="Alamat" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Telepon</label>
-								<div class="col-lg-10">
-									<input type="text" name="phone" class="form-control" placeholder="Telepon" />
+									<input type="text" name="title" class="form-control" placeholder="Name" />
 								</div>
 							</div>
 							
@@ -133,11 +90,11 @@ $(document).ready(function() {
 	var page = {
 		show_grid: function() {
 			$('.grid-main').show();
-			$('#form-teacher').hide();
+			$('#form-class-level').hide();
 		},
 		show_form: function() {
 			$('.grid-main').hide();
-			$('#form-teacher').show();
+			$('#form-class-level').show();
 		}
 	}
 	
@@ -148,16 +105,16 @@ $(document).ready(function() {
 	
 	// grid
 	var param = {
-		id: 'datatable', debug: true,
-		source: web.host + 'teacher/grid',
-		column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
+		id: 'datatable',
+		source: web.host + 'class_level/grid',
+		column: [ { }, { bSortable: false, sClass: "center" } ],
 		callback: function() {
 			$('#datatable .btn-edit').click(function() {
 				var raw_record = $(this).siblings('.hide').text();
 				eval('var record = ' + raw_record);
 				
-				Func.ajax({ url: web.host + 'teacher/action', param: { action: 'get_by_id', id: record.id }, callback: function(result) {
-					Func.populate({ cnt: '#form-teacher', record: result });
+				Func.ajax({ url: web.host + 'class_level/action', param: { action: 'get_by_id', id: record.id }, callback: function(result) {
+					Func.populate({ cnt: '#form-class-level', record: result });
 					page.show_form();
 				} });
 			});
@@ -168,7 +125,7 @@ $(document).ready(function() {
 				
 				Func.form.del({
 					data: { action: 'delete', id: record.id },
-					url: web.host + 'teacher/action', callback: function() { dt.reload(); }
+					url: web.host + 'class_level/action', callback: function() { dt.reload(); }
 				});
 			});
 		}
@@ -178,27 +135,27 @@ $(document).ready(function() {
 	// form agama
 	$('.btn-add').click(function() {
 		page.show_form();
-		$('#form-teacher form')[0].reset();
-		$('#form-teacher [name="id"]').val(0);
+		$('#form-class-level form')[0].reset();
+		$('#form-class-level [name="id"]').val(0);
 	});
-	$('#form-teacher form').validate({
+	$('#form-class-level form').validate({
 		rules: {
-			name: { required: true, minlength: 2 }
+			title: { required: true, minlength: 2 }
 		}
 	});
-	$('#form-teacher form').submit(function(e) {
+	$('#form-class-level form').submit(function(e) {
 		e.preventDefault();
-		if (! $('#form-teacher form').valid()) {
+		if (! $('#form-class-level form').valid()) {
 			return false;
 		}
 		
 		Func.form.submit({
-			url: web.host + 'teacher/action',
-			param: Func.form.get_value('form-teacher'),
+			url: web.host + 'class_level/action',
+			param: Func.form.get_value('form-class-level'),
 			callback: function(result) {
 				dt.reload();
 				page.show_grid();
-				$('#form-teacher form')[0].reset();
+				$('#form-class-level form')[0].reset();
 			}
 		});
 	});

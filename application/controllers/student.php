@@ -11,7 +11,7 @@ class student extends SYGAAS_Controller {
 	
 	function grid() {
 		$_POST['is_edit'] = 1;
-		$_POST['column'] = array( 'name', 'nisn', 'phone' );
+		$_POST['column'] = array( 'name', 'nis', 'phone' );
 		
 		$array = $this->student_model->get_array($_POST);
 		$count = $this->student_model->get_count();
@@ -26,6 +26,14 @@ class student extends SYGAAS_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			if (isset($_POST['passwd'])) {
+				if (empty($_POST['passwd'])) {
+					unset($_POST['passwd']);
+				} else {
+					$_POST['passwd'] = EncriptPassword($_POST['passwd']);
+				}
+			}
+			
 			$result = $this->student_model->update($_POST);
 		} else if ($action == 'get_by_id') {
 			$result = $this->student_model->get_by_id(array( 'id' => $_POST['id'] ));

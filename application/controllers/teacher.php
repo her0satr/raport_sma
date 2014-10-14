@@ -26,6 +26,14 @@ class teacher extends SYGAAS_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			if (isset($_POST['passwd'])) {
+				if (empty($_POST['passwd'])) {
+					unset($_POST['passwd']);
+				} else {
+					$_POST['passwd'] = EncriptPassword($_POST['passwd']);
+				}
+			}
+			
 			$result = $this->teacher_model->update($_POST);
 		} else if ($action == 'get_by_id') {
 			$result = $this->teacher_model->get_by_id(array( 'id' => $_POST['id'] ));

@@ -1,3 +1,7 @@
+<?php
+	$array_class_level = $this->class_level_model->get_array();
+?>
+
 <?php $this->load->view( 'common/meta', array( 'title' => 'Siswa' ) ); ?>
 
 <body>
@@ -66,9 +70,24 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">NISN</label>
+								<label class="col-lg-2 control-label">Password</label>
 								<div class="col-lg-10">
-									<input type="text" name="nisn" class="form-control" placeholder="NISN" />
+									<input type="password" name="passwd" class="form-control" placeholder="Password" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Kelas</label>
+								<div class="col-lg-10">
+									<select name="class_level_id" class="form-control">
+										<?php echo ShowOption(array( 'Array' => $array_class_level )); ?>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-2 control-label">NIS</label>
+								<div class="col-lg-10">
+									<input type="text" name="nis" class="form-control" placeholder="NIS" />
 								</div>
 							</div>
 							<div class="form-group">

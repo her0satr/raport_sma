@@ -11,11 +11,15 @@
 	
 	<ul id="nav">
 		<li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+		<?php if ($user['user_type'] != 'student') { ?>
 		<li><a href="<?php echo base_url('teacher'); ?>"><i class="fa fa-users"></i><span>Guru</span></a></li>
 		<li><a href="<?php echo base_url('homeroom'); ?>"><i class="fa fa-foursquare"></i><span>Wali Kelas</span></a></li>
 		<li><a href="<?php echo base_url('discipline'); ?>"><i class="fa fa-book"></i><span>Mata Pelajaran</span></a></li>
 		<li><a href="<?php echo base_url('student'); ?>"><i class="fa fa-male"></i><span>Siswa</span></a></li>
-		<li><a href="<?php echo base_url('grade'); ?>"><i class="fa fa-flask"></i><span>Penilaian</span></a></li>
+		<li><a href="<?php echo base_url('class_level'); ?>"><i class="fa fa-list-ol"></i><span>Kelas</span></a></li>
+		<li><a href="<?php echo base_url('score'); ?>"><i class="fa fa-check"></i><span>Penilaian</span></a></li>
+		<li><a href="<?php echo base_url('grade'); ?>"><i class="fa fa-flask"></i><span>Rekap</span></a></li>
+		<?php } ?>
 	</ul>
 </div>
 

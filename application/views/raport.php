@@ -50,11 +50,12 @@
 	<table border="1" style="width: 800px;">
 		<tr>
 			<td style="text-align: center; width: 5%;">No</td>
-			<td style="text-align: center; width: 40%;">Mata Pelajaran</td>
+			<td style="text-align: center; width: 30%;">Mata Pelajaran</td>
 			<td style="text-align: center; width: 10%;">UH</td>
 			<td style="text-align: center; width: 10%;">UTS</td>
 			<td style="text-align: center; width: 10%;">UAS</td>
-			<td style="text-align: center; width: 10%;">Total</td>
+			<td style="text-align: center; width: 10%;">Jumlah</td>
+			<td style="text-align: center; width: 10%;">NR</td>
 		</tr>
 		<?php $counter = 1; ?>
 		<?php foreach ($array_grade as $key => $row) { ?>
@@ -64,6 +65,7 @@
 			<td style="text-align: center;"><?php echo $row['uh']; ?></td>
 			<td style="text-align: center;"><?php echo $row['uts']; ?></td>
 			<td style="text-align: center;"><?php echo $row['uas']; ?></td>
+			<td style="text-align: center;"><?php echo $row['total']; ?></td>
 			<td style="text-align: center;"><?php echo $row['raport']; ?></td>
 		</tr>
 		<?php $counter++; ?>

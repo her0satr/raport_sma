@@ -2,6 +2,11 @@
 	// user
 	$user = $this->user_model->get_session();
 	
+	if ($user['user_type'] == 'student') {
+		// list raport
+		$array_link_raport = $this->grade_model->get_raport_link(array( 'student_id' => $user['id'] ));
+	}
+	
 	// page info
 	$view_type = (empty($this->uri->segments[2])) ? 'home' : $this->uri->segments[2];
 ?>
@@ -31,6 +36,16 @@
 	    <div class="matter"><div class="container">
             <div class="row"><div class="col-md-12">
 				
+				<?php if ($user['user_type'] == 'student') { ?>
+				<div class="widget" style="padding: 25px;">
+				Cetak Raport
+				<ul>
+					<?php foreach ($array_link_raport as $row) { ?>
+					<li><a href="<?php echo $row['link']; ?>" target="_blank">Tahun <?php echo get_value_year($row['tahun']); ?> Semester <?php echo get_value_semester($row['semester']); ?></a></li>
+					<?php } ?>
+				</ul>
+				</div>
+				<?php } else { ?>
 				<div class="widget" id="main-menu">
 					<ul class="info-blocks">
 						<li class="bg-info cnt-administrasi-kepegawaian">
@@ -47,6 +62,7 @@
 						</li>
 					</ul>
 				</div>
+				<?php } ?>
 				
 			</div></div>
         </div></div>

@@ -3,10 +3,45 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2014 at 10:48 AM
+-- Generation Time: Oct 14, 2014 at 02:21 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `raport_smp`
+--
+CREATE DATABASE IF NOT EXISTS `raport_smp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `raport_smp`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_level`
+--
+
+CREATE TABLE IF NOT EXISTS `class_level` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `class_level`
+--
+
+INSERT INTO `class_level` (`id`, `title`) VALUES
+(1, 'Kelas 7'),
+(2, 'Kelas 8'),
+(3, 'Kelas 9');
 
 -- --------------------------------------------------------
 
@@ -46,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `uts` int(11) NOT NULL,
   `uas` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `grade`
@@ -54,7 +89,10 @@ CREATE TABLE IF NOT EXISTS `grade` (
 
 INSERT INTO `grade` (`id`, `tahun`, `semester`, `student_id`, `discipline_id`, `uh`, `uts`, `uas`) VALUES
 (3, 2013, 1, 3, 2, 61, 62, 63),
-(4, 2013, 1, 3, 3, 70, 80, 80);
+(4, 2013, 1, 3, 3, 70, 80, 80),
+(5, 2013, 1, 2, 2, 10, 20, 30),
+(6, 2013, 1, 2, 3, 11, 22, 33),
+(7, 2013, 2, 3, 2, 11, 11, 12);
 
 -- --------------------------------------------------------
 
@@ -86,7 +124,10 @@ INSERT INTO `homeroom` (`id`, `tahun`, `semester`, `teacher_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_level_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `passwd` varchar(255) NOT NULL,
+  `nis` varchar(50) NOT NULL,
   `nisn` varchar(50) NOT NULL,
   `address` varchar(255) NOT NULL,
   `birthdate` date NOT NULL,
@@ -100,9 +141,9 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `name`, `nisn`, `address`, `birthdate`, `birthplace`, `gender`, `phone`) VALUES
-(2, 'Budiman', '215488', 'Malang', '2014-08-26', 'Surabaya', 'l', '034'),
-(3, 'Siska', '00221144', '', '2014-08-01', '', 'l', '0341');
+INSERT INTO `student` (`id`, `class_level_id`, `name`, `passwd`, `nis`, `nisn`, `address`, `birthdate`, `birthplace`, `gender`, `phone`) VALUES
+(2, 3, 'Budiman', 'af800a90a03cbaeba5ec7b46e4c7bb36', '5050', '215488', 'Malang', '2014-08-26', 'Surabaya', 'l', '034'),
+(3, 3, 'Siska', '74e191d65dd2763fabd7a093ec139711', '', '00221144', '', '2014-08-01', '', 'l', '0341');
 
 -- --------------------------------------------------------
 
@@ -113,6 +154,7 @@ INSERT INTO `student` (`id`, `name`, `nisn`, `address`, `birthdate`, `birthplace
 CREATE TABLE IF NOT EXISTS `teacher` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `passwd` varchar(255) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `birthdate` text NOT NULL,
   `birthplace` varchar(255) NOT NULL,
@@ -125,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`id`, `name`, `gender`, `birthdate`, `birthplace`, `address`, `phone`) VALUES
-(3, 'Bu Ratmi', 'p', '2014-08-01', 'Malang', 'Sukun', '0341'),
-(4, 'Pak Budi', 'l', '2014-08-07', 'Palembang', '-', '033'),
-(5, 'Yogi', 'l', '2014-05-06', '-', '-', '-');
+INSERT INTO `teacher` (`id`, `name`, `passwd`, `gender`, `birthdate`, `birthplace`, `address`, `phone`) VALUES
+(3, 'Guru A', 'b0d740b8b2711426075c975a9693a252', 'p', '2014-08-01', 'Malang', 'Sukun', '0341'),
+(4, 'Pak Budi', '', 'l', '2014-08-07', 'Palembang', '-', '033'),
+(5, 'Yogi', '', 'l', '2014-05-06', '-', '-', '-');
 
 -- --------------------------------------------------------
 
