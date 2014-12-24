@@ -24,7 +24,7 @@
 
 <div id="header">
 	<div class="small">Nama Sekolah</div>
-	<div class="medium">: SMP BOE Malang</div>
+	<div class="medium">: SMPK ST. ANTONIUS KALIPARE</div>
 	<div class="small">&nbsp;</div>
 	<!--
 	<div class="small">Kelas</div>

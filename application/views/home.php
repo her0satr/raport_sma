@@ -45,7 +45,7 @@
 					<?php } ?>
 				</ul>
 				</div>
-				<?php } else { ?>
+				<?php } else if (false) { ?>
 				<div class="widget" id="main-menu">
 					<ul class="info-blocks">
 						<li class="bg-info cnt-administrasi-kepegawaian">

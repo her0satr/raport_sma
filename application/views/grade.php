@@ -85,7 +85,7 @@
 									<th style="width: 40%;">Mata Pelajaran</th>
 									<th style="width: 10%;">UH</th>
 									<th style="width: 10%;">UTS</th>
-									<th style="width: 10%;">US</th>
+									<th style="width: 10%;">UAS</th>
 									<th style="width: 10%;">Raport</th>
 									<th style="width: 20%;">Control</th></tr>
 							</thead>

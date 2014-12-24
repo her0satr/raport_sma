@@ -69,6 +69,7 @@ class grade_model extends CI_Model {
 		$string_semester = (isset($param['semester'])) ? "AND grade.semester = '".$param['semester']."'" : '';
 		$string_student = (isset($param['student_id'])) ? "AND grade.student_id = '".$param['student_id']."'" : '';
 		$string_discipline = (isset($param['discipline_id'])) ? "AND grade.discipline_id = '".$param['discipline_id']."'" : '';
+		$string_class_level = (isset($param['class_level_id'])) ? "AND student.class_level_id = '".$param['class_level_id']."'" : '';
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'title ASC');
 		$string_limit = GetStringLimit($param);
@@ -78,7 +79,7 @@ class grade_model extends CI_Model {
 			FROM ".GRADE." grade
 			LEFT JOIN ".STUDENT." student ON student.id = grade.student_id
 			LEFT JOIN ".DISCIPLINE." discipline ON discipline.id = grade.discipline_id
-			WHERE 1 $string_tahun $string_semester $string_student $string_discipline $string_filter
+			WHERE 1 $string_tahun $string_semester $string_student $string_discipline $string_class_level $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

@@ -11,7 +11,7 @@ class grade extends SYGAAS_Controller {
 	
 	function grid() {
 		$_POST['is_edit'] = 1;
-		$_POST['column'] = array( 'discipline_title', 'uh', 'uts', 'us', 'raport' );
+		$_POST['column'] = array( 'discipline_title', 'uh', 'uts', 'uas', 'raport' );
 		
 		$array = $this->grade_model->get_array($_POST);
 		$count = $this->grade_model->get_count();
