@@ -42,6 +42,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	// form password
 	$('.btn-password').click(function() {
 		$('#form-password form')[0].reset();
 		$('#form-password').modal();
@@ -67,6 +68,13 @@ $(document).ready(function() {
 				$('#form-password').modal('hide');
 			}
 		});
+	});
+	
+	// button header
+	$('header nav .btn-raise-grade').click(function() {
+		Func.ajax({ url: web.host + 'service/raise_grade', param: {}, callback: function(result) {
+			noty({ text: result.message, layout: 'topRight', type: 'success', timeout: 1500 });
+		} });
 	});
 });
 </script>

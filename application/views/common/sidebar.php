@@ -19,6 +19,7 @@
 		<li><a href="<?php echo base_url('class_level'); ?>"><i class="fa fa-list-ol"></i><span>Kelas</span></a></li>
 		<?php } else if ($user['user_type'] == 'teacher') { ?>
 		<li><a href="<?php echo base_url('score'); ?>"><i class="fa fa-check"></i><span>Penilaian</span></a></li>
+		<li><a href="<?php echo base_url('ranking'); ?>"><i class="fa fa-check"></i><span>Ranking</span></a></li>
 		<li><a href="<?php echo base_url('grade'); ?>"><i class="fa fa-flask"></i><span>Rekap</span></a></li>
 		<?php } ?>
 	</ul>

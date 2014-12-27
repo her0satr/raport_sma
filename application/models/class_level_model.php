@@ -39,6 +39,13 @@ class class_level_model extends CI_Model {
 				WHERE class_level.id = '".$param['id']."'
 				LIMIT 1
 			";
+        } else if (isset($param['title'])) {
+            $select_query  = "
+				SELECT class_level.*
+				FROM ".CLASS_LEVEL." class_level
+				WHERE class_level.title = '".$param['title']."'
+				LIMIT 1
+			";
 		}
 		
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -98,5 +105,19 @@ class class_level_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function get_next_level($param = array()) {
+		$class_level = $this->get_by_id($param);
+		
+		// get title
+		$title = preg_replace('/[^0-9]/i', '', $class_level['title']);
+		$title_no = intval($title);
+		$title_no_next = $title_no + 1;
+		$title_next = str_replace($title_no, $title_no_next, $class_level['title']);
+		
+		// get next class level form table
+		$result = $this->get_by_id(array( 'title' => $title_next ));
+		return $result;
 	}
 }

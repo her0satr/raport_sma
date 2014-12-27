@@ -164,4 +164,31 @@ class grade_model extends CI_Model {
 			}
 		}
 	}
+	
+	function get_array_total($param = array()) {
+		$array_student = $param['array_student'];
+		
+		foreach ($array_student as $key => $row) {
+			$param_grade = array(
+				'tahun' => $param['tahun'],
+				'semester' => $param['semester'],
+				'student_id' => $row['id']
+			);
+			$array_grade = $this->grade_model->get_array($param_grade);
+			
+			// get total grade
+			$total_grade = $average_score = 0;
+			foreach ($array_grade as $grade) {
+				$total_grade += $grade['raport'];
+			}
+			if (count($array_grade) > 0) {
+				$average_score = round($total_grade / count($array_grade));
+			}
+			
+			// append average score
+			$array_student[$key]['average_score'] = $average_score;
+		}
+		
+		return $array_student;
+	}
 }

@@ -19,6 +19,9 @@
 					</a>
 					
 					<ul class="dropdown-menu">
+						<?php if ($user['user_type'] == 'admin') { ?>
+						<li><a class="cursor btn-raise-grade"><i class="fa fa-key"></i> Kenaikan kelas otomatis</a></li>
+						<?php } ?>
 						<li><a href="<?php echo base_url('home/logout'); ?>"><i class="fa fa-key"></i> Logout</a></li>
 					</ul>
 				</li>
