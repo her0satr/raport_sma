@@ -7,7 +7,7 @@ class raise_grade extends CI_Controller {
 	
 	function index() {
 		// array student
-		$array_student = $this->student_model->get_array(array( 'limit' => 3 ));
+		$array_student = $this->student_model->get_array(array( 'limit' => 1000 ));
 		
 		// update grade
 		$update_count = array();
